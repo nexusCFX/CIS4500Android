@@ -1,5 +1,6 @@
 package com.cis4500.music.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +8,12 @@ import android.view.ViewGroup;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Artist;
+import com.cis4500.music.views.TitleImageViewHolder;
 
 import java.util.List;
 
 
-public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecyclerViewAdapter.ViewHolder> {
+public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageViewHolder> {
 
     private final List<Artist> artists;
     private final ArtistRecyclerViewDelegate delegate;
@@ -21,43 +23,21 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
         this.delegate = delegate;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.artist_list_item, parent, false);
-        return new ViewHolder(view);
+    public TitleImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new TitleImageViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.title_image_list_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-       /* holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
-
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });*/
+    public void onBindViewHolder(@NonNull TitleImageViewHolder holder, int position) {
+        holder.view.setOnClickListener(v -> delegate.didSelectArtist(artists.get(position)));
     }
 
     @Override
     public int getItemCount() {
         return artists.size();
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        final View view;
-
-        ViewHolder(View view) {
-            super(view);
-            this.view = view;
-        }
     }
 
     public interface ArtistRecyclerViewDelegate {

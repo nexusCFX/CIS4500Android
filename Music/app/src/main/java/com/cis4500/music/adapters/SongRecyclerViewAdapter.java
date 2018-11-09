@@ -1,5 +1,6 @@
 package com.cis4500.music.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,27 +22,17 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerVi
         this.delegate = delegate;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.song_list_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-      /*  holder.song = songs.get(position);
-
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != actionDelegate) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    actionDelegate.didSelectSong(holder.song);
-                }
-            }
-        });*/
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        holder.view.setOnClickListener(v -> delegate.didSelectSong(songs.get(position)));
     }
 
     @Override

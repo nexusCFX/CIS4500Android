@@ -6,38 +6,18 @@ import android.os.Parcelable;
 public class Artist implements Parcelable {
 
     private String name;
-    private int numberOfAlbums = -1;
 
-    public Artist(String name, int numberOfAlbums) {
+    public Artist(String name) {
         this.name = name;
-        this.numberOfAlbums = numberOfAlbums;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumberOfAlbums() {
-        return numberOfAlbums;
-    }
-
-    public void setNumberOfAlbums(int numberOfAlbums) {
-        this.numberOfAlbums = numberOfAlbums;
     }
 
     protected Artist(Parcel in) {
         name = in.readString();
-        numberOfAlbums = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeInt(numberOfAlbums);
     }
 
     @Override
@@ -56,4 +36,14 @@ public class Artist implements Parcelable {
             return new Artist[size];
         }
     };
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }

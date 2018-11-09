@@ -8,10 +8,14 @@
         android:id="@+id/libraryFragment"
         android:name="com.cis4500.music.fragments.LibraryFragment"
         android:label="fragment_library_list"
-        tools:layout="@layout/fragment_library_list" >
+        tools:layout="@layout/list_layout" >
         <action
             android:id="@+id/action_libraryFragment_to_artistFragment"
-            app:destination="@id/artistFragment" />
+            app:destination="@id/artistFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_libraryFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
@@ -23,7 +27,7 @@
         android:id="@+id/artistFragment"
         android:name="com.cis4500.music.fragments.ArtistFragment"
         android:label="fragment_artist_list"
-        tools:layout="@layout/fragment_artist_list" >
+        tools:layout="@layout/list_layout" >
         <action
             android:id="@+id/action_artistFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
@@ -32,7 +36,7 @@
         android:id="@+id/albumFragment"
         android:name="com.cis4500.music.fragments.AlbumFragment"
         android:label="fragment_album_list"
-        tools:layout="@layout/fragment_album_list" >
+        tools:layout="@layout/list_layout" >
         <action
             android:id="@+id/action_albumFragment_to_songFragment"
             app:destination="@id/songFragment" />
@@ -41,5 +45,5 @@
         android:id="@+id/songFragment"
         android:name="com.cis4500.music.fragments.SongFragment"
         android:label="fragment_song_list"
-        tools:layout="@layout/fragment_song_list" />
+        tools:layout="@layout/list_layout" />
 </navigation>
