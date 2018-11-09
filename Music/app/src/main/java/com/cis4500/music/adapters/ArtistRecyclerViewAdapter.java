@@ -1,7 +1,12 @@
 package com.cis4500.music.adapters;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +37,10 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageVi
 
     @Override
     public void onBindViewHolder(@NonNull TitleImageViewHolder holder, int position) {
+        holder.image.setImageResource(R.drawable.noartist);
+        holder.image.setBackgroundResource(R.drawable.rounded_rect);
+        holder.image.setClipToOutline(true);
+
         holder.view.setOnClickListener(v -> delegate.didSelectArtist(artists.get(position)));
     }
 

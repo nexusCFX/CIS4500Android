@@ -20,7 +20,7 @@ import com.cis4500.music.models.Album;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumFragment extends Fragment implements AlbumRecyclerViewDelegate {
+public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDelegate {
 
     private List<Album> albums;
 
@@ -31,20 +31,15 @@ public class AlbumFragment extends Fragment implements AlbumRecyclerViewDelegate
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).setBarTitle("Albums");
-    }
-
-    // TODO: Change to grid layout with album art
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_layout, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         recyclerView.setAdapter(new AlbumRecyclerViewAdapter(albums, this));
         return view;
+    }
+
+    @Override
+    public int numberOfColumns() {
+        return 2;
     }
 
     @Override

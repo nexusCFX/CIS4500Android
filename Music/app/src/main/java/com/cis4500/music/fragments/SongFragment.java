@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SongFragment extends Fragment implements SongRecyclerViewDelegate {
+public class SongFragment extends ListFragment implements SongRecyclerViewDelegate {
 
     private List<Song> songs;
 
@@ -32,16 +32,8 @@ public class SongFragment extends Fragment implements SongRecyclerViewDelegate {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).setBarTitle("Artists");
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_layout, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         recyclerView.setAdapter(new SongRecyclerViewAdapter(songs, this));
         return view;
     }
@@ -49,5 +41,10 @@ public class SongFragment extends Fragment implements SongRecyclerViewDelegate {
     @Override
     public void didSelectSong(Song song) {
 
+    }
+
+    @Override
+    public int numberOfColumns() {
+        return 1;
     }
 }

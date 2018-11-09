@@ -23,7 +23,7 @@ import com.cis4500.music.models.Artist;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtistFragment extends Fragment implements ArtistRecyclerViewDelegate {
+public class ArtistFragment extends ListFragment implements ArtistRecyclerViewDelegate {
 
     private List<Artist> artists;
 
@@ -39,20 +39,15 @@ public class ArtistFragment extends Fragment implements ArtistRecyclerViewDelega
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).setBarTitle("Artists");
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        recyclerView.setAdapter(new ArtistRecyclerViewAdapter(artists, this));
+        return view;
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_layout, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new ArtistRecyclerViewAdapter(artists, this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),
-                LinearLayout.VERTICAL));
-        return view;
+    public int numberOfColumns() {
+        return 1;
     }
 
     @Override
