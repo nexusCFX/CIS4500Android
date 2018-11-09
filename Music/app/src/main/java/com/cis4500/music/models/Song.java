@@ -1,4 +1,4 @@
-package com.cis4500.music;
+package com.cis4500.music.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

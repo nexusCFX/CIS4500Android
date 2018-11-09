@@ -6,22 +6,22 @@
     app:startDestination="@id/libraryFragment">
     <fragment
         android:id="@+id/libraryFragment"
-        android:name="com.cis4500.music.LibraryFragment"
+        android:name="com.cis4500.music.fragments.LibraryFragment"
         android:label="fragment_library_list"
         tools:layout="@layout/fragment_library_list" >
         <action
-            android:id="@+id/action_libraryFragment_to_artistFragment2"
+            android:id="@+id/action_libraryFragment_to_artistFragment"
             app:destination="@id/artistFragment" />
         <action
-            android:id="@+id/action_libraryFragment_to_albumFragment3"
+            android:id="@+id/action_libraryFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
         <action
-            android:id="@+id/action_libraryFragment_to_songFragment3"
+            android:id="@+id/action_libraryFragment_to_songFragment"
             app:destination="@id/songFragment" />
     </fragment>
     <fragment
         android:id="@+id/artistFragment"
-        android:name="com.cis4500.music.ArtistFragment"
+        android:name="com.cis4500.music.fragments.ArtistFragment"
         android:label="fragment_artist_list"
         tools:layout="@layout/fragment_artist_list" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
-        android:name="com.cis4500.music.AlbumFragment"
+        android:name="com.cis4500.music.fragments.AlbumFragment"
         android:label="fragment_album_list"
         tools:layout="@layout/fragment_album_list" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/songFragment"
-        android:name="com.cis4500.music.SongFragment"
+        android:name="com.cis4500.music.fragments.SongFragment"
         android:label="fragment_song_list"
         tools:layout="@layout/fragment_song_list" />
 </navigation>

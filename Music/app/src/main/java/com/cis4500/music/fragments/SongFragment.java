@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
+import com.cis4500.music.adapters.SongRecyclerViewAdapter;
+import com.cis4500.music.models.Song;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
+import java.util.List;
 
 
 public class SongFragment extends Fragment {

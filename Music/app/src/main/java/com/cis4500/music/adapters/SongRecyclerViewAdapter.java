@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.cis4500.music.SongFragment.SongFragmentDelegate;
+import com.cis4500.music.models.Song;
 
 import java.util.List;
 
