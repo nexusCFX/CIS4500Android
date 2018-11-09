@@ -1,24 +1,24 @@
-package com.cis4500.music;
+package com.cis4500.music.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cis4500.music.R;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter;
+import com.cis4500.music.adapters.SongRecyclerViewAdapter.SongRecyclerViewDelegate;
 import com.cis4500.music.models.Song;
 
 import java.util.List;
 
 
-public class SongFragment extends Fragment {
+public class SongFragment extends Fragment implements SongRecyclerViewDelegate {
 
-
-    private SongFragmentDelegate delegate;
     private List<Song> songs;
 
     public SongFragment() {
@@ -47,30 +47,13 @@ public class SongFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setAdapter(new SongRecyclerViewAdapter(songs, delegate));
+            recyclerView.setAdapter(new SongRecyclerViewAdapter(songs, this));
         }
         return view;
     }
 
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof SongFragmentDelegate) {
-            delegate = (SongFragmentDelegate) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement SongFragmentDelegate");
-        }
-    }
+    public void didSelectSong(Song song) {
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        delegate = null;
-    }
-
-    public interface SongFragmentDelegate {
-        void didSelectSong(Song song);
     }
 }

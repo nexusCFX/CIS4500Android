@@ -1,29 +1,24 @@
-package com.cis4500.music;
+package com.cis4500.music.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.cis4500.music.ArtistFragment.OnListFragmentInteractionListener;
-import com.cis4500.music.dummy.DummyContent.DummyItem;
+import com.cis4500.music.R;
+import com.cis4500.music.models.Artist;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final List<Artist> artists;
+    private final ArtistRecyclerViewDelegate delegate;
 
-    public ArtistRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
-        mListener = listener;
+    public ArtistRecyclerViewAdapter(List<Artist> artists, ArtistRecyclerViewDelegate delegate) {
+        this.artists = artists;
+        this.delegate = delegate;
     }
 
     @Override
@@ -35,7 +30,7 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
+       /* holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
 
@@ -48,30 +43,24 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
-        });
+        });*/
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return artists.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        final View view;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
-            mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            this.view = view;
         }
+    }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
+    public interface ArtistRecyclerViewDelegate {
+        void didSelectArtist(Artist artist);
     }
 }

@@ -1,11 +1,12 @@
-package com.cis4500.music;
+package com.cis4500.music.adapters;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.cis4500.music.SongFragment.SongFragmentDelegate;
+import com.cis4500.music.R;
 import com.cis4500.music.models.Song;
 
 import java.util.List;
@@ -13,11 +14,11 @@ import java.util.List;
 public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerViewAdapter.ViewHolder> {
 
     private final List<Song> songs;
-    private final SongFragmentDelegate actionDelegate;
+    private final SongRecyclerViewDelegate delegate;
 
-    public SongRecyclerViewAdapter(List<Song> songs, SongFragment.SongFragmentDelegate actionDelegate) {
+    public SongRecyclerViewAdapter(List<Song> songs, SongRecyclerViewDelegate delegate) {
         this.songs = songs;
-        this.actionDelegate = actionDelegate;
+        this.delegate = delegate;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.song = songs.get(position);
+      /*  holder.song = songs.get(position);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +41,7 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerVi
                     actionDelegate.didSelectSong(holder.song);
                 }
             }
-        });
+        });*/
     }
 
     @Override
@@ -51,10 +52,18 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerVi
     class ViewHolder extends RecyclerView.ViewHolder {
         Song song;
         View view;
+        TextView trackNumberView;
+        TextView titleView;
 
         ViewHolder(View view) {
             super(view);
             this.view = view;
+            this.trackNumberView = view.findViewById(R.id.trackNumberView);
+            this.titleView = view.findViewById(R.id.songTitleView);
         }
+    }
+
+    public interface SongRecyclerViewDelegate {
+        void didSelectSong(Song song);
     }
 }
