@@ -54,4 +54,9 @@ public class ArtistFragment extends ListFragment implements ArtistRecyclerViewDe
     public void didSelectArtist(Artist artist) {
 
     }
+
+    @Override
+    public String getTitle() {
+        return "Artists";
+    }
 }

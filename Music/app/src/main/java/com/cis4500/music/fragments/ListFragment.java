@@ -21,7 +21,7 @@ public abstract class ListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity)getActivity()).setBarTitle("Artists");
+        ((MainActivity)getActivity()).setBarTitle(getTitle());
     }
 
     @Override
@@ -37,4 +37,6 @@ public abstract class ListFragment extends Fragment {
     }
 
     public abstract int numberOfColumns();
+
+    public abstract String getTitle();
 }

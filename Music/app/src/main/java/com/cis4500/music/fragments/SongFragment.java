@@ -52,4 +52,9 @@ public class SongFragment extends ListFragment implements SongRecyclerViewDelega
     public int numberOfColumns() {
         return 1;
     }
+
+    @Override
+    public String getTitle() {
+        return "Songs";
+    }
 }

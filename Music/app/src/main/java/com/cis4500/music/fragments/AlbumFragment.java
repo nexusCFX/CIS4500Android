@@ -28,6 +28,9 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         albums = new ArrayList<>();
+        albums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
+        albums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));
+        albums.add(new Album("Guardians of the Galaxy Original Score", "Tyler Bates", "", 2013, 12));
     }
 
     @Override
@@ -45,5 +48,10 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
     @Override
     public void didSelectAlbum(Album album) {
 
+    }
+
+    @Override
+    public String getTitle() {
+        return "Albums";
     }
 }
