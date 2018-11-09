@@ -22,10 +22,7 @@ public class SongFragment extends Fragment {
 
     private SongFragmentDelegate delegate;
     private List<Song> songs;
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
+
     public SongFragment() {
     }
 
@@ -47,7 +44,7 @@ public class SongFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_song_list, container, false);
+        View view = inflater.inflate(R.layout.list_layout, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
