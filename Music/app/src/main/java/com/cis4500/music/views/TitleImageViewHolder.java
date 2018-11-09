@@ -9,14 +9,17 @@ import com.cis4500.music.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TitleImageViewHolder extends RecyclerView.ViewHolder {
-    public final View view;
-    public final TextView title;
-    public final ImageView image;
+    public View view;
+    public TextView title;
+    public ImageView image;
 
     public TitleImageViewHolder(View view) {
         super(view);
         this.view = view;
         title = view.findViewById(R.id.title);
         image = view.findViewById(R.id.image);
+        image.setImageResource(R.drawable.noartist);
+        image.setBackgroundResource(R.drawable.rounded_rect);
+        image.setClipToOutline(true);
     }
 }

@@ -37,11 +37,10 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageVi
 
     @Override
     public void onBindViewHolder(@NonNull TitleImageViewHolder holder, int position) {
-        holder.image.setImageResource(R.drawable.noartist);
-        holder.image.setBackgroundResource(R.drawable.rounded_rect);
-        holder.image.setClipToOutline(true);
+        Artist artist = artists.get(position);
+        holder.title.setText(artist.getName());
 
-        holder.view.setOnClickListener(v -> delegate.didSelectArtist(artists.get(position)));
+        holder.view.setOnClickListener(v -> delegate.didSelectArtist(artist));
     }
 
     @Override
