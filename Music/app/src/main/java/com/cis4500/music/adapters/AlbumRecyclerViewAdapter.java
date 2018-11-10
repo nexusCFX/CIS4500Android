@@ -32,7 +32,7 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
 
     @Override
     public void onBindViewHolder(@NonNull final TitleDetailImageViewHolder holder, int position) {
-        StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams)holder.itemView.getLayoutParams();
+        StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams)holder.view.getLayoutParams();
         int density = Math.round(holder.view.getContext().getResources().getDisplayMetrics().density);
         if (position % 2 == 0) {
             p.setMargins(16*density,16*density,8*density,0);

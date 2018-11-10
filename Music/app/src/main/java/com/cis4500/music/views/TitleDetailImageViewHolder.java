@@ -9,7 +9,7 @@ import com.cis4500.music.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TitleDetailImageViewHolder extends TitleImageViewHolder {
-    TextView detail;
+    public TextView detail;
 
     public TitleDetailImageViewHolder(View view) {
         super(view);

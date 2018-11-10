@@ -3,6 +3,7 @@ package com.cis4500.music.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -17,13 +18,25 @@ import com.cis4500.music.adapters.LibraryRecyclerViewAdapter.LibraryRecyclerView
 import com.cis4500.music.models.Album;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LibraryFragment extends ListFragment implements LibraryRecyclerViewDelegate {
+
+    private List<Album> recentAlbums;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        recentAlbums = new ArrayList<>();
+        recentAlbums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
+        recentAlbums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));
+        recentAlbums.add(new Album("Guardians of the Galaxy Original Score", "Tyler Bates", "", 2013, 12));
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        recyclerView.setAdapter(new LibraryRecyclerViewAdapter(new ArrayList<>(), this));
+        recyclerView.setAdapter(new LibraryRecyclerViewAdapter(recentAlbums, this));
         return view;
     }
 
