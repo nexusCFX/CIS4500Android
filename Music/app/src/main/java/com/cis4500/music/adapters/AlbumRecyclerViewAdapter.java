@@ -1,9 +1,5 @@
 package com.cis4500.music.adapters;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,6 +8,10 @@ import com.cis4500.music.models.Album;
 import com.cis4500.music.views.TitleDetailImageViewHolder;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailImageViewHolder> {
 
@@ -32,6 +32,7 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
 
     @Override
     public void onBindViewHolder(@NonNull final TitleDetailImageViewHolder holder, int position) {
+        Album album = albums.get(position);
         StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams)holder.view.getLayoutParams();
         int density = Math.round(holder.view.getContext().getResources().getDisplayMetrics().density);
         if (position % 2 == 0) {
@@ -39,6 +40,8 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
         } else {
             p.setMargins(8*density,16*density,16*density,0);
         }
+        holder.title.setText(album.getTitle());
+        holder.detail.setText(album.getArtist());
         holder.view.setOnClickListener(v -> delegate.didSelectAlbum(albums.get(position)));
         holder.image.setImageResource(R.drawable.noart);
     }

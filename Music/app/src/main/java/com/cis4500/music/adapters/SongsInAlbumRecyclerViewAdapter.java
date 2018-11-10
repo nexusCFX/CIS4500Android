@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Song;
-import com.cis4500.music.views.TitleDetailImageViewHolder;
-import com.cis4500.music.views.TitleImageViewHolder;
 
 import java.util.List;
 

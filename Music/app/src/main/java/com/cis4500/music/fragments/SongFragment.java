@@ -1,24 +1,19 @@
 package com.cis4500.music.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cis4500.music.MainActivity;
-import com.cis4500.music.R;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter.SongRecyclerViewDelegate;
 import com.cis4500.music.models.Song;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 
 public class SongFragment extends ListFragment implements SongRecyclerViewDelegate {

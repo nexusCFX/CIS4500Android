@@ -65,7 +65,7 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams)holder.itemView.getLayoutParams();
         TitleImageViewHolder h = null;
-        if (position < 4) {
+        if (position != 4) {
             h = (TitleImageViewHolder)holder;
             p.setFullSpan(true);
             h.view.setOnClickListener(v -> delegate.didSelectLibraryCategory(position));
@@ -89,15 +89,18 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
             ((ViewHolder)holder).titleView.setText("Recently Played");
             p.setFullSpan(true);
         } else {
-            Album album = recentAlbums.get(position - 5);
-            ((TitleDetailImageViewHolder)holder).title.setText(album.getTitle());
-            ((TitleDetailImageViewHolder)holder).detail.setText(album.getArtist());
             int density = Math.round(((TitleDetailImageViewHolder)holder).view.getContext().getResources().getDisplayMetrics().density);
             if (position % 2 == 1) {
                 p.setMargins(16*density,16*density,8*density,0);
             } else {
                 p.setMargins(8*density,16*density,16*density,0);
             }
+
+            Album album = recentAlbums.get(position - 5);
+            h.title.setText(album.getTitle());
+            ((TitleDetailImageViewHolder)h).detail.setText(album.getArtist());
+            h.image.setImageResource(R.drawable.noart);
+            h.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
         }
     }
 
