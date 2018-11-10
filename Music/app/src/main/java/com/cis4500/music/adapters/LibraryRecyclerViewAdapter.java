@@ -67,8 +67,10 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
         TitleImageViewHolder h = null;
         if (position != 4) {
             h = (TitleImageViewHolder)holder;
-            p.setFullSpan(true);
+        }
+        if (position < 4) {
             h.view.setOnClickListener(v -> delegate.didSelectLibraryCategory(position));
+            p.setFullSpan(true);
         }
         if (position == CATEGORY_ARTIST) {
             h.title.setText("Artists");
