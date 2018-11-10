@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cis4500.music.R;
 import com.cis4500.music.adapters.ArtistRecyclerViewAdapter;
 import com.cis4500.music.adapters.ArtistRecyclerViewAdapter.ArtistRecyclerViewDelegate;
 import com.cis4500.music.models.Artist;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 public class ArtistFragment extends ListFragment implements ArtistRecyclerViewDelegate {
 
@@ -44,7 +46,9 @@ public class ArtistFragment extends ListFragment implements ArtistRecyclerViewDe
 
     @Override
     public void didSelectArtist(Artist artist) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString("artistName", artist.getName());
+        Navigation.findNavController(getView()).navigate(R.id.action_artistFragment_to_albumFragment, bundle);
     }
 
     @Override

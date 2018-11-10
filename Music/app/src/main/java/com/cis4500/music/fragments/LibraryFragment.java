@@ -49,7 +49,9 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
 
     @Override
     public void didSelectAlbum(Album album) {
-        // TODO
+        Bundle bundle = new Bundle();
+        bundle.putString("albumTitle", album.getTitle());
+        Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_songsInAlbumFragment, bundle);
     }
 
     @Override

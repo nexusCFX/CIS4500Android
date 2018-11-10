@@ -10,13 +10,24 @@ import com.cis4500.music.adapters.SongsInAlbumRecyclerViewAdapter;
 import com.cis4500.music.adapters.SongsInAlbumRecyclerViewAdapter.SongsInAlbumRecyclerViewDelegate;
 import com.cis4500.music.models.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRecyclerViewDelegate {
 
     private List<Song> songs;
+    private String albumTitle;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        albumTitle = getArguments().getString("albumTitle");
+        songs = new ArrayList<>();
+        // TODO: Get real songs for real album
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +43,7 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
 
     @Override
     public String getTitle() {
-        return "";
+        return albumTitle;
     }
 
     @Override

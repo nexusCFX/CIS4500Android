@@ -22,7 +22,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="artistName"
+                android:defaultValue="Albums" />
+        </action>
         <action
             android:id="@+id/action_libraryFragment_to_songFragment"
             app:destination="@id/songFragment"
@@ -30,6 +34,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_libraryFragment_to_songsInAlbumFragment"
+            app:destination="@id/songsInAlbumFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/artistFragment"
@@ -42,7 +53,11 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="artistName"
+                android:defaultValue='""' />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
@@ -50,16 +65,28 @@
         android:label="fragment_album_list"
         tools:layout="@layout/list_layout" >
         <action
-            android:id="@+id/action_albumFragment_to_songFragment"
-            app:destination="@id/songFragment"
+            android:id="@+id/action_albumFragment_to_songsInAlbumFragment"
+            app:destination="@id/songsInAlbumFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="artistName"
+            app:argType="string"
+            android:defaultValue="Albums" />
     </fragment>
     <fragment
         android:id="@+id/songFragment"
         android:name="com.cis4500.music.fragments.SongFragment"
         android:label="fragment_song_list"
         tools:layout="@layout/list_layout" />
+    <fragment
+        android:id="@+id/songsInAlbumFragment"
+        android:name="com.cis4500.music.fragments.SongsInAlbumFragment"
+        android:label="SongsInAlbumFragment" >
+        <argument
+            android:name="albumTitle"
+            app:argType="string" />
+    </fragment>
 </navigation>

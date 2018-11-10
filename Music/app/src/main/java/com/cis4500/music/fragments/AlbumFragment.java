@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cis4500.music.R;
 import com.cis4500.music.adapters.AlbumRecyclerViewAdapter;
 import com.cis4500.music.adapters.AlbumRecyclerViewAdapter.AlbumRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
@@ -14,14 +15,17 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDelegate {
 
     private List<Album> albums;
+    private String artistName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        artistName = getArguments().getString("artistName");
         albums = new ArrayList<>();
         albums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
         albums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));
@@ -42,11 +46,13 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
 
     @Override
     public void didSelectAlbum(Album album) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString("albumTitle",album.getTitle());
+        Navigation.findNavController(getView()).navigate(R.id.action_albumFragment_to_songsInAlbumFragment, bundle);
     }
 
     @Override
     public String getTitle() {
-        return "Albums";
+        return artistName;
     }
 }
