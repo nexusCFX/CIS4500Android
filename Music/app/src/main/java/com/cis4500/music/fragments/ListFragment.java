@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public abstract class ListFragment extends Fragment {
 
@@ -31,7 +32,7 @@ public abstract class ListFragment extends Fragment {
         if (numberOfColumns() == 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         } else {
-            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns()));
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(numberOfColumns(), StaggeredGridLayoutManager.VERTICAL));
         }
         return view;
     }

@@ -39,11 +39,19 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
 
     @Override
     public void didSelectAlbum(Album album) {
-
+        // TODO
     }
 
     @Override
-    public void didSelectLibraryCategory() {
-
+    public void didSelectLibraryCategory(int category) {
+        if (category == LibraryRecyclerViewAdapter.CATEGORY_ALBUM) {
+            Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_albumFragment);
+        } else if (category == LibraryRecyclerViewAdapter.CATEGORY_ARTIST) {
+            Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_artistFragment);
+        } else if (category == LibraryRecyclerViewAdapter.CATEGORY_SONGS) {
+            Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_songFragment);
+        } else if (category == LibraryRecyclerViewAdapter.CATEGORY_GENRES) {
+            // TODO
+        }
     }
 }
