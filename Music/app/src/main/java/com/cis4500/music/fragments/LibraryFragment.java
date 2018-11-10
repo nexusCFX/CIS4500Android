@@ -12,21 +12,38 @@ import android.view.ViewGroup;
 
 import com.cis4500.music.MainActivity;
 import com.cis4500.music.R;
+import com.cis4500.music.adapters.LibraryRecyclerViewAdapter;
+import com.cis4500.music.adapters.LibraryRecyclerViewAdapter.LibraryRecyclerViewDelegate;
+import com.cis4500.music.models.Album;
 
-public class LibraryFragment extends Fragment {
+import java.util.ArrayList;
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).setBarTitle("Library");
-    }
+public class LibraryFragment extends ListFragment implements LibraryRecyclerViewDelegate {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.library_temp, container, false);
-        view.findViewById(R.id.albumBtn).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_libraryFragment_to_albumFragment));
-        view.findViewById(R.id.songBtn).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_libraryFragment_to_songFragment));
-        view.findViewById(R.id.artistBtn).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_libraryFragment_to_artistFragment));
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        recyclerView.setAdapter(new LibraryRecyclerViewAdapter(new ArrayList<>(), this));
         return view;
+    }
+
+    @Override
+    public int numberOfColumns() {
+        return 2;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Library";
+    }
+
+    @Override
+    public void didSelectAlbum(Album album) {
+
+    }
+
+    @Override
+    public void didSelectLibraryCategory() {
+
     }
 }
