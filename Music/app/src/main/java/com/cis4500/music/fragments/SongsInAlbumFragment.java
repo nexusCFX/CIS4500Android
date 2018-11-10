@@ -26,7 +26,7 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String albumTitle = getArguments().getString("albumTitle");
-        album = new Album("Fate/Kaleid", "Various Artists", "Anime", 2012, 12);
+        album = new Album(albumTitle, "Various Artists", "Anime", 2012, 12);
         songs = new ArrayList<>();
         songs.add(new Song("Exit Music", "OK Computer", "Radiohead", "", 1, -1, -1));
         songs.add(new Song("Starlog", "Fate/Kaleid", "ChouCho", "", -1, -1, -1));
