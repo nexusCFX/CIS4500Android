@@ -42,7 +42,7 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
         }
         holder.title.setText(album.getTitle());
         holder.detail.setText(album.getArtist());
-        holder.view.setOnClickListener(v -> delegate.didSelectAlbum(albums.get(position)));
+        holder.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
         holder.image.setImageResource(R.drawable.noart);
     }
 

@@ -25,7 +25,13 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        artistName = getArguments().getString("artistName");
+        String genre = getArguments().getString("genre");
+        if (genre != null && !genre.isEmpty()) {
+            artistName = genre;
+            // TODO: Pull albums for genre
+        } else {
+            artistName = getArguments().getString("artistName");
+        }
         albums = new ArrayList<>();
         albums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
         albums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));

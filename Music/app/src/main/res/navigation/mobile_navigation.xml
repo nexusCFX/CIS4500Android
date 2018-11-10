@@ -41,6 +41,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_libraryFragment_to_genreFragment"
+            app:destination="@id/genreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/artistFragment"
@@ -62,8 +69,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.cis4500.music.fragments.AlbumFragment"
-        android:label="fragment_album_list"
-        tools:layout="@layout/list_layout" >
+        android:label="fragment_album_list">
         <action
             android:id="@+id/action_albumFragment_to_songsInAlbumFragment"
             app:destination="@id/songsInAlbumFragment"
@@ -73,8 +79,11 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="artistName"
-            app:argType="string"
-            android:defaultValue="Albums" />
+            android:defaultValue="Albums"
+            app:argType="string" />
+        <argument
+            android:name="genre"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/songFragment"
@@ -88,5 +97,17 @@
         <argument
             android:name="albumTitle"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/genreFragment"
+        android:name="com.cis4500.music.fragments.GenreFragment"
+        android:label="GenreFragment" >
+        <action
+            android:id="@+id/action_genreFragment_to_albumFragment"
+            app:destination="@id/albumFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

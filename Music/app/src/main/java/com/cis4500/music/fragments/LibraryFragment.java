@@ -63,7 +63,7 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
         } else if (category == LibraryRecyclerViewAdapter.CATEGORY_SONGS) {
             Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_songFragment);
         } else if (category == LibraryRecyclerViewAdapter.CATEGORY_GENRES) {
-            // TODO
+            Navigation.findNavController(getView()).navigate(R.id.action_libraryFragment_to_genreFragment);
         }
     }
 }
