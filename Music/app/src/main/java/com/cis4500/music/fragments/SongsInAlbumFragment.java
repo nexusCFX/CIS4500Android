@@ -19,12 +19,11 @@ import androidx.annotation.Nullable;
 public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRecyclerViewDelegate {
 
     private List<Song> songs;
-    private String albumTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        albumTitle = getArguments().getString("albumTitle");
+        String albumTitle = getArguments().getString("albumTitle");
         songs = new ArrayList<>();
         // TODO: Get real songs for real album
     }
@@ -43,7 +42,7 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
 
     @Override
     public String getTitle() {
-        return albumTitle;
+        return "";
     }
 
     @Override
