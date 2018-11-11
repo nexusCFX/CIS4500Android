@@ -11,14 +11,14 @@ import com.cis4500.music.R;
 
 import androidx.fragment.app.Fragment;
 
-public class PlaybackBarFragment extends Fragment {
+public class NowPlayingFragment extends Fragment {
 
     PlaybackBarDelegate delegate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_playback_bar, container, false);
+        View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
         ImageView imageView = view.findViewById(R.id.playbackBarTinyArt);
         view.setOnClickListener(v -> delegate.didTapPlaybackBar());
         return view;
