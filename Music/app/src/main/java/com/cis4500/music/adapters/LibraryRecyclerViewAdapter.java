@@ -102,6 +102,7 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
             h.title.setText(album.getTitle());
             ((TitleDetailImageViewHolder)h).detail.setText(album.getArtist());
             h.image.setImageResource(R.drawable.noart);
+            h.image.setBackgroundResource(R.drawable.red_rounded_rect);
             h.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
         }
     }

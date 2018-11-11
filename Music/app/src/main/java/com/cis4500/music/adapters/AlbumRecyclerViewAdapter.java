@@ -44,6 +44,8 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
         holder.detail.setText(album.getArtist());
         holder.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
         holder.image.setImageResource(R.drawable.noart);
+        holder.image.setBackgroundResource(R.drawable.red_rounded_rect);
+        holder.image.setClipToOutline(true);
     }
 
     @Override

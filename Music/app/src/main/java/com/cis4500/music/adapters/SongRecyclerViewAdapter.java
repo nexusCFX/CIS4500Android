@@ -48,6 +48,8 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageView
         holder.view.setOnClickListener(v -> delegate.didSelectSong(song));
         holder.title.setText(song.getTitle());
         holder.image.setImageResource(R.drawable.noart);
+        holder.image.setBackgroundResource(R.drawable.red_rounded_rect);
+        holder.image.setClipToOutline(true);
         if (holder instanceof TitleDetailImageViewHolder) {
             ((TitleDetailImageViewHolder) holder).detail.setText(song.getArtist());
         }

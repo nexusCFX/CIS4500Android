@@ -67,6 +67,8 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             // Bind relevant data on creation since it never changes.
             header.albumView.setText(album.getTitle());
             header.artistView.setText(album.getArtist());
+            header.artView.setBackgroundResource(R.drawable.red_rounded_rect);
+            header.artView.setClipToOutline(true);
            // TODO header.artView.setImageBitmap(albumArt);
 
             //Year and genre may not be available.
