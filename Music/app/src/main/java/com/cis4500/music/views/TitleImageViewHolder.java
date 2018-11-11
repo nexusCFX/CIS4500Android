@@ -20,6 +20,5 @@ public class TitleImageViewHolder extends RecyclerView.ViewHolder {
         image = view.findViewById(R.id.image);
         image.setImageResource(R.drawable.noartist);
         image.setBackgroundResource(R.drawable.rounded_rect);
-        image.setClipToOutline(true);
     }
 }
