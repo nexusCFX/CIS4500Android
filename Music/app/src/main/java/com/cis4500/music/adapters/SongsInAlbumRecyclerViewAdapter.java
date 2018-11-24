@@ -65,10 +65,7 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
             HeaderViewHolder header = (HeaderViewHolder)holder;
 
             // Bind relevant data on creation since it never changes.
-            header.albumView.setText(album.getTitle());
             header.artistView.setText(album.getArtist());
-            header.artView.setBackgroundResource(R.drawable.red_rounded_rect);
-            header.artView.setClipToOutline(true);
            // TODO header.artView.setImageBitmap(albumArt);
 
             //Year and genre may not be available.
@@ -98,7 +95,6 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
     // ViewHolder for the header cell
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
         public final View view;
-        public final TextView albumView;
         public final TextView artistView;
         public final TextView genreView;
         public final TextView yearView;
@@ -107,13 +103,10 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         public HeaderViewHolder(View view) {
             super(view);
             this.view = view;
-            albumView = view.findViewById(R.id.album_header_album_textView);
             artistView = view.findViewById(R.id.album_header_artist_textView);
             genreView = view.findViewById(R.id.album_header_genre_textView);
             yearView = view.findViewById(R.id.album_header_year_textView);
             artView = view.findViewById(R.id.album_header_albumArt);
-            artView.setBackgroundResource(R.drawable.rounded_rect);
-            artView.setClipToOutline(true);
         }
     }
 

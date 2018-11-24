@@ -13,12 +13,13 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/red_rounded_rect"
+        android:src="@drawable/noart"
         android:elevation="0dp"
         android:translationZ="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/noart" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -33,18 +34,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:text="Title"
+            android:id="@+id/album_header_artist_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/album_header_album_textView"
+            android:text="Artist"
             android:textAppearance="@android:style/TextAppearance.Material.Title"
             android:textSize="18sp" />
-
-        <TextView
-            android:text="Artist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/album_header_artist_textView" />
 
         <TextView
             android:text="Genre"

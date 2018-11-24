@@ -50,7 +50,7 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
 
     @Override
     public String getTitle() {
-        return "";
+        return album.getTitle();
     }
 
     @Override
