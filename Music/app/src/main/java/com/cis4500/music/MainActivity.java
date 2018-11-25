@@ -15,7 +15,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.transition.AutoTransition;
 import androidx.transition.ChangeBounds;
 import androidx.transition.TransitionManager;
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NowPlayingFragmen
         set.clone(layout);
         View image = findViewById(R.id.playbackBarTinyArt);
         View text = findViewById(R.id.playbackBarTitle);
-        View playButton = findViewById(R.id.playButton);
+        View playButton = findViewById(R.id.smallPlay);
         View nextButton = findViewById(R.id.nextButton);
         getSupportActionBar().hide();
 
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements NowPlayingFragmen
         set.clone(layout);
         View image = findViewById(R.id.playbackBarTinyArt);
         View text = findViewById(R.id.playbackBarTitle);
-        View playButton = findViewById(R.id.playButton);
+        View playButton = findViewById(R.id.smallPlay);
         View nextButton = findViewById(R.id.nextButton);
 
         getSupportActionBar().show();
