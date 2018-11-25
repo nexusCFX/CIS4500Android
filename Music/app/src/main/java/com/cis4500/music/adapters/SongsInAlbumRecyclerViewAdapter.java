@@ -67,7 +67,7 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
 
             header.artistView.setText(album.getArtist());
             header.artView.setImageBitmap(MusicDataSource.shared().getAlbumArtForAlbum(album.getTitle()));
-            header.artView.setBackgroundResource(R.drawable.rounded_rect);
+            header.artView.setBackgroundResource(R.drawable.red_rounded_rect);
             header.artView.setClipToOutline(true);
 
             //Year and genre may not be available.

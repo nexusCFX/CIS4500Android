@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cis4500.music.MusicPlayer;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter.SongRecyclerViewDelegate;
 import com.cis4500.music.models.MusicDataSource;
@@ -36,7 +37,7 @@ public class SongFragment extends ListFragment implements SongRecyclerViewDelega
 
     @Override
     public void didSelectSong(Song song) {
-
+        MusicPlayer.shared().play(song);
     }
 
     @Override
