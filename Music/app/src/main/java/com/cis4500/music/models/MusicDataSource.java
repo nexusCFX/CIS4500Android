@@ -263,11 +263,11 @@ public class MusicDataSource {
                 if (albumArt.containsKey(album.getTitle())) {
                     return albumArt.get(album.getTitle());
                 } else {
-                    return defaultArt;
+                    return defaultArtistArt;
                 }
             }
         }
-        return defaultArt;
+        return defaultArtistArt;
     }
 
     /**
@@ -277,6 +277,7 @@ public class MusicDataSource {
     public void populateAll(Context context, Bitmap defaultArt, Bitmap defaultArtistArt) {
         this.context = context;
         this.defaultArtistArt = defaultArtistArt;
+        this.defaultArt = defaultArt;
         populateAlbums(context, true);
         populateArtists(context);
         populateSongs(context);

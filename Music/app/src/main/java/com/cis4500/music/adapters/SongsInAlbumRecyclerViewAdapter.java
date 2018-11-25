@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.models.Song;
 
 import java.util.List;
@@ -64,9 +65,10 @@ public class SongsInAlbumRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         } else {
             HeaderViewHolder header = (HeaderViewHolder)holder;
 
-            // Bind relevant data on creation since it never changes.
             header.artistView.setText(album.getArtist());
-           // TODO header.artView.setImageBitmap(albumArt);
+            header.artView.setImageBitmap(MusicDataSource.shared().getAlbumArtForAlbum(album.getTitle()));
+            header.artView.setBackgroundResource(R.drawable.rounded_rect);
+            header.artView.setClipToOutline(true);
 
             //Year and genre may not be available.
             if (album.getYear() == -1) {

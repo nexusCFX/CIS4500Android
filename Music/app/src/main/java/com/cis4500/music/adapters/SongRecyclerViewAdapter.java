@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cis4500.music.R;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.models.Song;
 import com.cis4500.music.views.TitleDetailImageViewHolder;
 import com.cis4500.music.views.TitleImageViewHolder;
@@ -47,7 +48,7 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageView
         Song song = songs.get(position);
         holder.view.setOnClickListener(v -> delegate.didSelectSong(song));
         holder.title.setText(song.getTitle());
-        holder.image.setImageResource(R.drawable.noart);
+        holder.image.setImageBitmap(MusicDataSource.shared().getAlbumArtForAlbum(song.getAlbum()));
         holder.image.setBackgroundResource(R.drawable.red_rounded_rect);
         holder.image.setClipToOutline(true);
         if (holder instanceof TitleDetailImageViewHolder) {
