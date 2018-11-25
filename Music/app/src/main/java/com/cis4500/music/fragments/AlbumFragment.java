@@ -9,6 +9,7 @@ import com.cis4500.music.R;
 import com.cis4500.music.adapters.AlbumRecyclerViewAdapter;
 import com.cis4500.music.adapters.AlbumRecyclerViewAdapter.AlbumRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +32,12 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
             // TODO: Pull albums for genre
         } else {
             artistName = getArguments().getString("artistName");
+            if (artistName.equals("Albums")) {
+                albums = MusicDataSource.shared().getAlbums();
+            } else {
+                albums = MusicDataSource.shared().getAlbumsFeaturingArtist(artistName);
+            }
         }
-        albums = new ArrayList<>();
-        albums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
-        albums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));
-        albums.add(new Album("Guardians of the Galaxy Original Score", "Tyler Bates", "", 2013, 12));
     }
 
     @Override

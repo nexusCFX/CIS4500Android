@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 import com.cis4500.music.adapters.SongsInAlbumRecyclerViewAdapter;
 import com.cis4500.music.adapters.SongsInAlbumRecyclerViewAdapter.SongsInAlbumRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.models.Song;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,14 +28,8 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String albumTitle = getArguments().getString("albumTitle");
-        album = new Album(albumTitle, "Various Artists", "Anime", 2012, 12);
-        songs = new ArrayList<>();
-        songs.add(new Song("Exit Music", "OK Computer", "Radiohead", "", 1, -1, -1));
-        songs.add(new Song("Starlog", "Fate/Kaleid", "ChouCho", "", -1, -1, -1));
-        songs.add(new Song("TWO BY TWO", "Fate/Kaleid", "", "", 9, -1, -1));
-        songs.add(new Song("Bohemian Rhapsody", "Queen Greatest Hits", "Queen", "", 30, -1, -1));
-        songs.add(new Song("Black Tears", "Guardians of the Galaxy Original Score", "Tyler Bates", "", 287, -1, -1));
-        // TODO: Get real songs for real album
+        album = MusicDataSource.shared().getAlbums().stream().filter(album -> album.getTitle().equals(albumTitle)).findFirst().get();
+        songs  = MusicDataSource.shared().getAllSongsInAlbum(albumTitle);
     }
 
     @Override

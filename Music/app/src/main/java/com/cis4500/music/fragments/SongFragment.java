@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.cis4500.music.adapters.SongRecyclerViewAdapter;
 import com.cis4500.music.adapters.SongRecyclerViewAdapter.SongRecyclerViewDelegate;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.models.Song;
 
 import java.util.ArrayList;
@@ -23,12 +24,7 @@ public class SongFragment extends ListFragment implements SongRecyclerViewDelega
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        songs = new ArrayList<>();
-        songs.add(new Song("Exit Music", "OK Computer", "Radiohead", "", -1, -1, -1));
-        songs.add(new Song("Starlog", "Fate/Kaleid", "ChouCho", "", -1, -1, -1));
-        songs.add(new Song("TWO BY TWO", "Fate/Kaleid", "", "", -1, -1, -1));
-        songs.add(new Song("Bohemian Rhapsody", "Queen Greatest Hits", "Queen", "", -1, -1, -1));
-        songs.add(new Song("Black Tears", "Guardians of the Galaxy Original Score", "Tyler Bates", "", -1, -1, -1));
+        songs = MusicDataSource.shared().getSongs();
     }
 
     @Override

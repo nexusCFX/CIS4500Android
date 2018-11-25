@@ -1,24 +1,50 @@
 package com.cis4500.music;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
 import com.cis4500.music.fragments.NowPlayingFragment;
+import com.cis4500.music.models.MusicDataSource;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.transition.AutoTransition;
 import androidx.transition.ChangeBounds;
 import androidx.transition.TransitionManager;
 
-public class MainActivity extends AppCompatActivity implements NowPlayingFragment.PlaybackBarDelegate {
+public class MainActivity extends AppCompatActivity implements NowPlayingFragment.PlaybackBarDelegate, ActivityCompat.OnRequestPermissionsResultCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.closeButton).setOnClickListener(v -> collapseNowPlaying());
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { android.Manifest.permission.READ_EXTERNAL_STORAGE }, 1);
+        } else {
+            populateData();
+        }
+    }
+
+    public void onRequestPermissionsResult (int requestCode, String[] permissions, int[] grantResults) {
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            populateData();
+        }
+    }
+
+    private void populateData() {
+        // Populate music data source ahead of time because we need it at first load
+        Bitmap albumCover = BitmapFactory.decodeResource(getResources(), R.drawable.noart);
+        Bitmap artistCover = BitmapFactory.decodeResource(getResources(), R.drawable.noartist);
+        MusicDataSource.shared().populateAll(getApplicationContext(), albumCover, artistCover);
     }
 
     public void setBarTitle(String title) {

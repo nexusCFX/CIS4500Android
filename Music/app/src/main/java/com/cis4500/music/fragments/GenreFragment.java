@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.cis4500.music.R;
 import com.cis4500.music.adapters.GenreRecyclerViewAdapter;
+import com.cis4500.music.models.MusicDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +23,7 @@ public class GenreFragment extends ListFragment implements GenreRecyclerViewAdap
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        genres = new ArrayList<>();
-        genres.add("Anime");
-        genres.add("Classic Rock");
-        genres.add("Jazz");
-        genres.add("Jpop");
-        genres.add("Film");
+        genres = MusicDataSource.shared().getGenres();
     }
 
     @Override

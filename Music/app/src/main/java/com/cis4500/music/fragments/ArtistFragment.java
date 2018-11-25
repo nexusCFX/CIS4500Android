@@ -9,6 +9,7 @@ import com.cis4500.music.R;
 import com.cis4500.music.adapters.ArtistRecyclerViewAdapter;
 import com.cis4500.music.adapters.ArtistRecyclerViewAdapter.ArtistRecyclerViewDelegate;
 import com.cis4500.music.models.Artist;
+import com.cis4500.music.models.MusicDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,7 @@ public class ArtistFragment extends ListFragment implements ArtistRecyclerViewDe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        artists = new ArrayList<>();
-        artists.add(new Artist("Daft Punk"));
-        artists.add(new Artist("ClariS"));
-        artists.add(new Artist("Queen"));
-        artists.add(new Artist("Rush"));
-        artists.add(new Artist("Radiohead"));
+        artists = MusicDataSource.shared().getArtists();
     }
 
     @Override

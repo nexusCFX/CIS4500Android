@@ -1,10 +1,12 @@
 package com.cis4500.music.adapters;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.views.TitleDetailImageViewHolder;
 
 import java.util.List;
@@ -43,7 +45,7 @@ public class AlbumRecyclerViewAdapter extends RecyclerView.Adapter<TitleDetailIm
         holder.title.setText(album.getTitle());
         holder.detail.setText(album.getArtist());
         holder.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
-        holder.image.setImageResource(R.drawable.noart);
+        holder.image.setImageBitmap(MusicDataSource.shared().getAlbumArtForAlbum(album.getTitle()));
         holder.image.setBackgroundResource(R.drawable.red_rounded_rect);
         holder.image.setClipToOutline(true);
     }

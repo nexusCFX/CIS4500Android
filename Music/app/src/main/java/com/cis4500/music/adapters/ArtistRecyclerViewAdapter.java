@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Artist;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.views.TitleImageViewHolder;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<TitleImageVi
     public void onBindViewHolder(@NonNull TitleImageViewHolder holder, int position) {
         Artist artist = artists.get(position);
         holder.title.setText(artist.getName());
-
+        holder.image.setImageBitmap(MusicDataSource.shared().getAlbumArtForArtist(artist.getName()));
         holder.view.setOnClickListener(v -> delegate.didSelectArtist(artist));
     }
 
