@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.cis4500.music.R;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.views.TitleDetailImageViewHolder;
 import com.cis4500.music.views.TitleImageViewHolder;
 
@@ -101,7 +102,7 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
             Album album = recentAlbums.get(position - 5);
             h.title.setText(album.getTitle());
             ((TitleDetailImageViewHolder)h).detail.setText(album.getArtist());
-            h.image.setImageResource(R.drawable.noart);
+            h.image.setImageBitmap(MusicDataSource.shared().getAlbumArtForAlbum(album.getTitle()));
             h.image.setBackgroundResource(R.drawable.red_rounded_rect);
             h.view.setOnClickListener(v -> delegate.didSelectAlbum(album));
         }

@@ -9,6 +9,7 @@ import com.cis4500.music.R;
 import com.cis4500.music.adapters.LibraryRecyclerViewAdapter;
 import com.cis4500.music.adapters.LibraryRecyclerViewAdapter.LibraryRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
+import com.cis4500.music.models.MusicDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,7 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recentAlbums = new ArrayList<>();
-        recentAlbums.add(new Album("OK Computer", "Radiohead", "", 1991, 12));
-        recentAlbums.add(new Album("Fate/Kaleid", "Various Artists", "", 2012, 12));
-        recentAlbums.add(new Album("Guardians of the Galaxy Original Score", "Tyler Bates", "", 2013, 12));
+        recentAlbums = MusicDataSource.shared().getAlbums();
     }
 
     @Override

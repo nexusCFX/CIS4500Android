@@ -53,5 +53,6 @@ public class SongsInAlbumFragment extends ListFragment implements SongsInAlbumRe
     @Override
     public void didSelectSong(Song song) {
         MusicPlayer.shared().play(song);
+        MusicPlayer.shared().setSongsInContext(songs.toArray(new Song[0]));
     }
 }

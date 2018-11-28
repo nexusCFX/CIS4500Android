@@ -38,6 +38,7 @@ public class SongFragment extends ListFragment implements SongRecyclerViewDelega
     @Override
     public void didSelectSong(Song song) {
         MusicPlayer.shared().play(song);
+        MusicPlayer.shared().setSongsInContext(songs.toArray(new Song[0]));
     }
 
     @Override

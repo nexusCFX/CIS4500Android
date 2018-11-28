@@ -170,7 +170,7 @@ public class NowPlayingFragment extends Fragment implements MusicPlayer.MusicPla
 
     public void onRepeatButtonTap(View view) {
         if (player.repeatMode() == MusicPlayer.REPEAT_NONE) {
-            repeatButton.setColorFilter(R.color.colorAccent);
+            repeatButton.setColorFilter(getResources().getColor(R.color.colorAccent));
             player.setRepeat(MusicPlayer.REPEAT_ALL);
         } else if (player.repeatMode() == MusicPlayer.REPEAT_ALL) {
             repeatButton.setImageResource(R.drawable.repeat_one);
@@ -188,7 +188,7 @@ public class NowPlayingFragment extends Fragment implements MusicPlayer.MusicPla
             shuffleButton.setColorFilter(Color.BLACK);
         } else {
             player.setShuffle(true);
-            shuffleButton.setColorFilter(R.color.colorAccent);
+            shuffleButton.setColorFilter(getResources().getColor(R.color.colorAccent));
         }
     }
 

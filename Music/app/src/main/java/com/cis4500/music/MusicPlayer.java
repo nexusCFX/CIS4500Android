@@ -1,11 +1,13 @@
 package com.cis4500.music;
 
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 
 import com.cis4500.music.models.Song;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -192,6 +194,7 @@ public class MusicPlayer {
             isPlaying = true;
             if (delegate != null) {
                 delegate.onSongChanged(song);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
