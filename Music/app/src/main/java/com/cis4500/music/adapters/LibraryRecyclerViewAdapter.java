@@ -28,7 +28,7 @@ public class LibraryRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
     private static int TYPE_HEADER = 1;
     private static int TYPE_ALBUM = 2;
 
-    private List<Album> recentAlbums;
+    public List<Album> recentAlbums;
     private LibraryRecyclerViewDelegate delegate;
 
     public LibraryRecyclerViewAdapter(List<Album> recentAlbums, LibraryRecyclerViewDelegate delegate) {

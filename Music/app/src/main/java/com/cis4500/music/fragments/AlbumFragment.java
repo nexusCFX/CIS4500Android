@@ -10,9 +10,13 @@ import com.cis4500.music.adapters.AlbumRecyclerViewAdapter;
 import com.cis4500.music.adapters.AlbumRecyclerViewAdapter.AlbumRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
 import com.cis4500.music.models.MusicDataSource;
+import com.cis4500.music.models.Song;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +33,7 @@ public class AlbumFragment extends ListFragment implements AlbumRecyclerViewDele
         String genre = getArguments().getString("genre");
         if (genre != null && !genre.isEmpty()) {
             artistName = genre;
-            // TODO: Pull albums for genre
+            albums = MusicDataSource.shared().getAlbums();
         } else {
             artistName = getArguments().getString("artistName");
             if (artistName.equals("Albums")) {

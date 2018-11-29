@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="16dp"
+        android:lines="1"
         android:text="Not Playing"
         android:textColor="@android:color/black"
         android:textSize="18sp"

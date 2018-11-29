@@ -1,5 +1,6 @@
 package com.cis4500.music.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.cis4500.music.adapters.LibraryRecyclerViewAdapter;
 import com.cis4500.music.adapters.LibraryRecyclerViewAdapter.LibraryRecyclerViewDelegate;
 import com.cis4500.music.models.Album;
 import com.cis4500.music.models.MusicDataSource;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        recentAlbums = MusicDataSource.shared().getAlbums();
+        recentAlbums = MusicDataSource.shared().getRecentAlbums();
     }
 
     @Override
@@ -33,6 +35,20 @@ public class LibraryFragment extends ListFragment implements LibraryRecyclerView
         View view = super.onCreateView(inflater, container, savedInstanceState);
         recyclerView.setAdapter(new LibraryRecyclerViewAdapter(recentAlbums, this));
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recentAlbums = MusicDataSource.shared().getRecentAlbums();
+        ((LibraryRecyclerViewAdapter)recyclerView.getAdapter()).recentAlbums = recentAlbums;
+        recyclerView.getAdapter().notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        MusicDataSource.shared().saveRecentAlbums(getContext());
     }
 
     @Override

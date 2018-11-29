@@ -38,6 +38,11 @@ public class NowPlayingFragment extends Fragment implements MusicPlayer.MusicPla
     private ImageButton bigPlay;
     private ImageButton repeatButton;
     private ImageButton shuffleButton;
+
+    private ImageButton smallNext;
+    private ImageButton bigNext;
+    private ImageButton largePrev;
+
     private MusicPlayer player = MusicPlayer.shared();
 
     private Handler seekBarUpdateHandler = new Handler();
@@ -75,6 +80,10 @@ public class NowPlayingFragment extends Fragment implements MusicPlayer.MusicPla
 
         repeatButton.setOnClickListener(this::onRepeatButtonTap);
         shuffleButton.setOnClickListener(this::onShuffleButtonTap);
+
+        bigNext = view.findViewById(R.id.nextButtonLarge);
+        smallNext = view.findViewById(R.id.nextButton);
+
 
         currentPosition.setOnSeekBarChangeListener(seekBarChangeListener);
 

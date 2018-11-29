@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 
+import com.cis4500.music.models.MusicDataSource;
 import com.cis4500.music.models.Song;
 
 import java.io.IOException;
@@ -194,8 +195,8 @@ public class MusicPlayer {
             isPlaying = true;
             if (delegate != null) {
                 delegate.onSongChanged(song);
-
             }
+            MusicDataSource.shared().addRecentAlbum(song.getAlbum());
         } catch (IOException e) {
             e.printStackTrace();
         }

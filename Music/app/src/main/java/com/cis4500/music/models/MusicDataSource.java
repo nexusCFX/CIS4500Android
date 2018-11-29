@@ -1,16 +1,22 @@
 package com.cis4500.music.models;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 
 // TODO: Add smart caching and improve efficiency
 public class MusicDataSource {
@@ -18,6 +24,7 @@ public class MusicDataSource {
     private static MusicDataSource instance = null;
 
     private HashMap<String, Bitmap> albumArt = new HashMap<>();
+    private LinkedList<Album> recentAlbums;
     private ArrayList<Album> albums;
     private ArrayList<Artist> artists;
     private ArrayList<Song> songs;
@@ -38,6 +45,32 @@ public class MusicDataSource {
             instance = new MusicDataSource();
         }
         return instance;
+    }
+
+    public List<Album> getRecentAlbums() {
+        return recentAlbums;
+    }
+
+    public void saveRecentAlbums(Context context) {
+        Gson gson = new Gson();
+        String recents = gson.toJson(recentAlbums);
+        context.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit().putString("RECENT_ALBUMS", recents).apply();
+    }
+
+    public void addRecentAlbum(String albumName) {
+        Album album = null;
+        for (Album a : albums) {
+            if (a.getTitle().equals(albumName)) {
+                album = a;
+            }
+        }
+        if (album != null) {
+            recentAlbums.removeIf(a -> a.getTitle().equals(albumName));
+            recentAlbums.addFirst(album);
+        }
+        if (recentAlbums.size() > 10) {
+            recentAlbums.removeLast();
+        }
     }
 
     /**
@@ -278,6 +311,14 @@ public class MusicDataSource {
         this.context = context;
         this.defaultArtistArt = defaultArtistArt;
         this.defaultArt = defaultArt;
+        SharedPreferences prefs = context.getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        String recentAlbums = prefs.getString("RECENT_ALBUMS", "");
+        if (!recentAlbums.isEmpty()) {
+            Gson gson = new Gson();
+            this.recentAlbums = gson.fromJson(recentAlbums, new TypeToken<LinkedList<Album>>(){}.getType());
+        } else {
+            this.recentAlbums = new LinkedList<>();
+        }
         populateAlbums(context, true);
         populateArtists(context);
         populateSongs(context);
